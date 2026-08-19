@@ -38,10 +38,13 @@ public class ResumeController {
                 + "Job Description:\n" + jobDescription;
 
         // Step 3: Gemini API call karo
-        String geminiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey;        RestTemplate restTemplate = new RestTemplate();
+        String geminiUrl =
+                "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent";
+        RestTemplate restTemplate = new RestTemplate();
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-
+        headers.set("x-goog-api-key", apiKey);
         Map<String, Object> body = new HashMap<>();
         List<Map<String, Object>> contents = new ArrayList<>();
         Map<String, Object> content = new HashMap<>();
